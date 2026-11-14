@@ -1,0 +1,19 @@
+name = "reframelean_mini"
+version = "0.1.0"
+defaultTargets = ["ReFrameLeanMini"]
+
+# Same toolchain and Mathlib as the private project's verification runs
+# (lean-toolchain: leanprover/lean4:v4.32.0; Mathlib 81a5d257, pinned in
+# lake-manifest.json). No [leanOptions]: the recorded verdicts were produced
+# without them, and options such as pp.unicode.fun change message text.
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.0"
+
+# One generated module per item and no root module. In Lake, `.+` selects the
+# submodules only; `.*` would also select a root ReFrameLeanMini.lean, which
+# does not exist.
+[[lean_lib]]
+name = "ReFrameLeanMini"
+globs = ["ReFrameLeanMini.+"]

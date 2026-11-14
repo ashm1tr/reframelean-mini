@@ -1,0 +1,84 @@
+item_id,gold_action,branch,route,expected,lean,module,pinned_error,class,note,item_author,added_by
+abstract_algebra.idempotent_dichotomy.001,override,x,hint (X),fails,example,ReFrameLeanMini.AbstractAlgebra.IdempotentDichotomy,"error: unsolved goals
+a : ℝ
+hyp : a * a = a
+h : a * a = a * 1
+⊢ ¬a = 0",invalid cancellation,"Cancelling a from a·a = a·1 is the obvious one-step move, but it needs a ≠ 0, and a = 0 also solves the equation, so cancelling discards a root. `norm_num` cannot supply a ≠ 0, leaving `unsolved goals` with target `¬a = 0`.",arnav,arnav
+abstract_algebra.idempotent_dichotomy.001,override,y,alternative (Y),compiles,reframe_idempotent_dichotomy_y,ReFrameLeanMini.AbstractAlgebra.IdempotentDichotomy,,,,arnav,arnav
+abstract_algebra.power_card_zmod11.001,both_valid,x,hint (X),compiles,reframe_mc017_013_x,ReFrameLeanMini.AbstractAlgebra.PowerCardZmod11,,,,arnav,arnav
+abstract_algebra.power_card_zmod11.001,both_valid,y,alternative (Y),compiles,reframe_mc017_013_y,ReFrameLeanMini.AbstractAlgebra.PowerCardZmod11,,,,arnav,arnav
+abstract_group.inv_inv.001,follow,x,hint (X),compiles,reframe_group_inv_inv_x,ReFrameLeanMini.AbstractGroup.InvInv,,,,ashmit,ashmit
+abstract_group.inv_inv.001,follow,y,alternative (Y),compiles,reframe_group_inv_inv_y,ReFrameLeanMini.AbstractGroup.InvInv,,,,ashmit,zac
+combinatorics.sum_of_squares_formula.001,repair,x,hint (X),compiles,reframe_co_sum_sq_x,ReFrameLeanMini.Combinatorics.SumOfSquaresFormula,,,,arnav,arnav
+combinatorics.sum_of_squares_formula.001,repair,naive,"hint, literal attempt",fails,example,ReFrameLeanMini.Combinatorics.SumOfSquaresFormula,error: `simp` made no progress,local slip,"Induction is the right route, but `simp [ih]` never uses ih: nothing splits off the last term or distributes the 6, so ih's left side never appears and Lean reports `simp` made no progress. The repaired x_proof rewrites with `Finset.sum_range_succ`, `Nat.mul_add` and ih, then closes with `ring`.",arnav,arnav
+combinatorics.triangular_as_binomial.001,both_valid,x,hint (X),compiles,reframe_sum_range_succ_eq_choose_two_x,ReFrameLeanMini.Combinatorics.TriangularAsBinomial,,,,ashmit,ashmit
+combinatorics.triangular_as_binomial.001,both_valid,y,alternative (Y),compiles,reframe_sum_range_succ_eq_choose_two_y,ReFrameLeanMini.Combinatorics.TriangularAsBinomial,,,,ashmit,ashmit
+combinatorics.union_cardinality_bound.001,override,x,hint (X),fails,example,ReFrameLeanMini.Combinatorics.UnionCardinalityBound,error: `simp` made no progress,missing hypothesis,"The hint asserts the sets are disjoint, which would make |s ∪ t| = |s| + |t| immediate, but the statement gives no disjointness and overlapping sets break the equality. The side goal `Disjoint s t` does not follow, so Lean reports: `simp` made no progress.",arnav,arnav
+combinatorics.union_cardinality_bound.001,override,y,alternative (Y),compiles,reframe_co_union_card_bound_y,ReFrameLeanMini.Combinatorics.UnionCardinalityBound,,,,arnav,arnav
+discrete_probability.sum_linearity.001,override,x,hint (X),fails,example,ReFrameLeanMini.DiscreteProbability.SumLinearity,"error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (∑ i ∈ ?s, ?f i) * ∑ j ∈ ?t, ?g j
+in the target expression
+  ∑ i ∈ Finset.range n, (f i + g i) = ∑ i ∈ Finset.range n, f i + ∑ i ∈ Finset.range n, g i",category error,"The hint borrows the product rule E[XY] = E[X]·E[Y], true under independence, but this goal is additive: the sum of f i + g i is the sum of the two sums, not their product. `Finset.sum_mul_sum` needs a product of sums, and the goal has none: `rewrite` failed.",arnav,arnav
+discrete_probability.sum_linearity.001,override,y,alternative (Y),compiles,reframe_dp_sum_add_y,ReFrameLeanMini.DiscreteProbability.SumLinearity,,,,arnav,arnav
+finset_sums.telescope_sq.001,both_valid,x,hint (X),compiles,reframe_sum_range_telescope_sq_x,ReFrameLeanMini.FinsetSums.TelescopeSq,,,,ashmit,ashmit
+finset_sums.telescope_sq.001,both_valid,y,alternative (Y),compiles,reframe_sum_range_telescope_sq_y,ReFrameLeanMini.FinsetSums.TelescopeSq,,,,ashmit,ashmit
+linear_algebra.gram_transpose_self.001,both_valid,x,hint (X),compiles,reframe_gram_transpose_self_x,ReFrameLeanMini.LinearAlgebra.GramTransposeSelf,,,,ashmit,ashmit
+linear_algebra.gram_transpose_self.001,both_valid,y,alternative (Y),compiles,reframe_gram_transpose_self_y,ReFrameLeanMini.LinearAlgebra.GramTransposeSelf,,,,ashmit,ashmit
+linear_algebra.injective_composition.001,override,x,hint (X),fails,example,ReFrameLeanMini.LinearAlgebra.InjectiveComposition,error: Tactic `rewrite` failed: Did not find an occurrence of the pattern,wrong ambient structure,"Trading injectivity for a trivial kernel, then counting dimensions, is the familiar vector-space route, but the statement supports neither step: without subtraction a trivial kernel does not force injectivity, and a dimension count needs finite-dimensional spaces. `LinearMap.ker_eq_bot` needs a ring and additive groups, so `rewrite` failed.",arnav,arnav
+linear_algebra.injective_composition.001,override,y,alternative (Y),compiles,reframe_la_injective_comp_y,ReFrameLeanMini.LinearAlgebra.InjectiveComposition,,,,arnav,arnav
+linear_algebra.unit_one_sub_square_zero.001,follow,x,hint (X),compiles,reframe_isUnit_one_sub_of_sq_eq_zero_x,ReFrameLeanMini.LinearAlgebra.UnitOneSubSquareZero,,,,ashmit,ashmit
+linear_algebra.unit_one_sub_square_zero.001,follow,y,alternative (Y),compiles,reframe_isUnit_one_sub_of_sq_eq_zero_y,ReFrameLeanMini.LinearAlgebra.UnitOneSubSquareZero,,,,ashmit,zac
+matrix_ring.inv_mul_self.001,follow,x,hint (X),compiles,reframe_matrix_inv_mul_self_x,ReFrameLeanMini.MatrixRing.InvMulSelf,,,,ashmit,ashmit
+matrix_ring.inv_mul_self.001,follow,y,alternative (Y),compiles,reframe_matrix_inv_mul_self_y,ReFrameLeanMini.MatrixRing.InvMulSelf,,,,ashmit,zac
+number_theory.dvd_sub_direct.001,follow,x,hint (X),compiles,reframe_dvd_sub_follow_x,ReFrameLeanMini.NumberTheory.DvdSubDirect,,,,ashmit,ashmit
+number_theory.dvd_sub_direct.001,follow,y,alternative (Y),compiles,reframe_dvd_sub_follow_y,ReFrameLeanMini.NumberTheory.DvdSubDirect,,,,ashmit,zac
+number_theory.even_closure_addition.001,follow,x,hint (X),compiles,reframe_nt_even_add_even_x,ReFrameLeanMini.NumberTheory.EvenClosureAddition,,,,arnav,arnav
+number_theory.mutual_divisibility_sign.001,override,x,hint (X),fails,example,ReFrameLeanMini.NumberTheory.MutualDivisibilitySign,"error: Application type mismatch: The argument
+  hba
+has type
+  b ∣ a
+but is expected to have type",wrong ambient structure,"Divisibility is antisymmetric in the naturals, whose only unit is 1, so a = b looks immediate; in the integers the unit -1 also allows a = -b. `Int.dvd_antisymm` first wants `0 ≤ a` and `0 ≤ b`, so the call fails: `Application type mismatch`.",arnav,arnav
+number_theory.mutual_divisibility_sign.001,override,y,alternative (Y),compiles,reframe_o04_mutual_dvd_y,ReFrameLeanMini.NumberTheory.MutualDivisibilitySign,,,,arnav,arnav
+number_theory.square_residues_mod_four.001,override,x,hint (X),fails,example,ReFrameLeanMini.NumberTheory.SquareResiduesModFour,"error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.",wrong quantifier or witness,"Odd squares are 1 mod 4 by Euler's theorem, so assuming n coprime to 4 makes the right disjunct look universal. But that assumption discards even n, whose squares are 0 mod 4, so after `right` the goal is false for them: `omega could not prove the goal`.",arnav,arnav
+number_theory.square_residues_mod_four.001,override,y,alternative (Y),compiles,reframe_sq_residue_mod_four_y,ReFrameLeanMini.NumberTheory.SquareResiduesModFour,,,,arnav,arnav
+real_analysis.abs_sub_le_symm.001,repair,x,hint (X),compiles,reframe_abs_sub_le_symm_repair_x,ReFrameLeanMini.RealAnalysis.AbsSubLeSymm,,,,ashmit,ashmit
+real_analysis.abs_sub_le_symm.001,repair,y,alternative (Y),compiles,reframe_abs_sub_le_symm_repair_y,ReFrameLeanMini.RealAnalysis.AbsSubLeSymm,,,,ashmit,zac
+real_analysis.abs_sub_le_symm.001,repair,naive,"hint, literal attempt",fails,example,ReFrameLeanMini.RealAnalysis.AbsSubLeSymm,"error: Type mismatch
+  abs_sub_le a b c
+has type
+  |a - c| ≤ |a - b| + |b - c|
+but is expected to have type
+  |a - c| ≤ |b - a| + |b - c|",local slip,"Tempting because `abs_sub_le a b c` is exactly the triangle inequality through b; but it gives |a - b| where the goal has |b - a|, so `exact` fails with `Type mismatch`. The repaired x_proof first rewrites with `abs_sub_comm b a`, then applies the same lemma.",ashmit,ashmit
+real_analysis.archimedean_le_of_forall_nat.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.ArchimedeanLeOfForallNat,"error: linarith failed to find a contradiction
+x y : ℝ
+h : ∀ (n : ℕ), x ≤ y + 1 / (↑n + 1)
+a✝ : y < x
+⊢ False
+failed",finite/infinite mismatch,"Goal and instances are all linear, so feeding a few instances to `linarith` looks enough. But finitely many instances allow a positive gap x − y below each chosen 1/(n+1); only all n, via the Archimedean property, force x ≤ y, so `linarith failed to find a contradiction`.",william,william
+real_analysis.archimedean_le_of_forall_nat.001,override,y,alternative (Y),compiles,reframe_le_of_forall_nat_le_add_y,ReFrameLeanMini.RealAnalysis.ArchimedeanLeOfForallNat,,,,william,william
+real_analysis.bivariate_separation.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.BivariateSeparation,"error: Failed to find ∀ (x y : ℝ),
+  x ^ 2 + x * y + y ^ 2 =
+    f x +
+      g",wrong ambient structure,"Comparing coefficients is the standard proof for polynomials, and the x·y coefficient would give 1 = 0. But f and g are arbitrary functions with no coefficients, so the identity cannot be promoted: `apply Polynomial.funext at h` fails with `Failed to find … as the type of a parameter`.",arnav,ashmit
+real_analysis.bivariate_separation.001,override,y,alternative (Y),compiles,reframe_bivariate_no_separation_y,ReFrameLeanMini.RealAnalysis.BivariateSeparation,,,,arnav,arnav
+real_analysis.compact_extreme_value.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.CompactExtremeValue,"error: failed to synthesize instance of type class
+  FirstCountableTopology X",wrong ambient structure,"The maximising-sequence argument is the standard proof in metric spaces, so it is the natural first move. But X is an arbitrary topological space, where compact sets need not be sequentially compact, and `hs.isSeqCompact` fails with `failed to synthesize instance of type class FirstCountableTopology X`.",william,william
+real_analysis.compact_extreme_value.001,override,y,alternative (Y),compiles,reframe_compact_exists_max_y,ReFrameLeanMini.RealAnalysis.CompactExtremeValue,,,,william,william
+real_analysis.derivative_intermediate_value.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.DerivativeIntermediateValue,"error: Application type mismatch: The argument
+  hf
+has type
+  ∀ x ∈ Icc a b, HasDerivWithinAt f (f' x) (Icc a b) x
+but is expected to have type",false general principle,"If derivatives were continuous, the intermediate value theorem applied to f' would finish at once. But a derivative need not be continuous (x² sin(1/x) is the standard example), and the script's lemma, `HasDerivWithinAt.continuousOn`, gives continuity of f, not f', so Lean reports `Application type mismatch`.",william,william
+real_analysis.derivative_intermediate_value.001,override,y,alternative (Y),compiles,reframe_deriv_intermediate_value_y,ReFrameLeanMini.RealAnalysis.DerivativeIntermediateValue,,,,william,william
+real_analysis.quintic_root_ivt.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.QuinticRootIvt,"error: unsolved goals
+case refine_2
+⊢ False",wrong quantifier or witness,"Tempting because a rational root search names a witness mechanically; but the root is irrational: the only rational candidate in [1,2] is 1, and 1^5 + 1 - 3 = -1. After `refine ⟨1, ?_, ?_⟩`, `norm_num` reduces the equation to `⊢ False`, leaving `unsolved goals`.",ashmit,ashmit
+real_analysis.quintic_root_ivt.001,override,y,alternative (Y),compiles,reframe_quintic_root_mem_Icc_y,ReFrameLeanMini.RealAnalysis.QuinticRootIvt,,,,ashmit,ashmit
+real_analysis.uniform_continuity_linear.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.UniformContinuityLinear,"error: failed to synthesize
+  CompactSpace ℝ",false general principle,"Tempting because 2x is plainly continuous and Heine–Cantor upgrades continuity to uniform continuity; but that needs a compact domain, and on ℝ the implication is false (x² is continuous, not uniformly continuous). Lean stops at `apply CompactSpace.uniformContinuous_of_continuous` with `failed to synthesize CompactSpace ℝ`.",william,william
+real_analysis.uniform_continuity_linear.001,override,y,alternative (Y),compiles,reframe_uniform_continuous_two_mul_y,ReFrameLeanMini.RealAnalysis.UniformContinuityLinear,,,,william,william
+real_analysis.uniform_limit_continuity.001,override,x,hint (X),fails,example,ReFrameLeanMini.RealAnalysis.UniformLimitContinuity,error: `fun_prop` was unable to prove `ContinuousOn G t`,false general principle,"Tempting because each f n is continuous and pointwise convergence follows from the uniform hypothesis; but a pointwise limit of continuous functions need not be continuous (x^n on [0,1]). The `have` states that false principle, which no tactic can prove: `fun_prop` was unable to prove `ContinuousOn G t`.",william,william
+real_analysis.uniform_limit_continuity.001,override,y,alternative (Y),compiles,reframe_uniform_limit_continuousOn_y,ReFrameLeanMini.RealAnalysis.UniformLimitContinuity,,,,william,william
+set_theory.union_three_piece_partition.001,both_valid,x,hint (X),compiles,reframe_union_three_piece_partition_x,ReFrameLeanMini.SetTheory.UnionThreePiecePartition,,,,ashmit,ashmit
+set_theory.union_three_piece_partition.001,both_valid,y,alternative (Y),compiles,reframe_union_three_piece_partition_y,ReFrameLeanMini.SetTheory.UnionThreePiecePartition,,,,ashmit,ashmit
